@@ -1,5 +1,8 @@
 package com.springboot.app.metereologia;
 
+import java.util.Arrays;
+import java.util.List;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.boot.SpringApplication;
@@ -27,11 +30,19 @@ public class SpringbootServicioMetereologiaApplication implements CommandLineRun
 		WeatherData weatherData = new WeatherData();
 		weatherData.setCreateAt("2020-01-01");
 		Location location = new Location();
+		//List<Temperature> temperatures = Arrays.asList(new Temperature(1.0), new Temperature(2.0), new Temperature(3.0), new Temperature(4.0), new Temperature(5.0), new Temperature(6.0), new Temperature(7.0), new Temperature(8.0), new Temperature(9.0), new Temperature(10.0));		
+		//List<Temperature> temperatures = Arrays.asList(new Temperature(1L, 1.0), new Temperature(2L, 2.0));//
+		Temperature temp = new Temperature();
+		Temperature temp2 = new Temperature();
+		temp.setTemperature(1.0);
+		temp2.setTemperature(2.0);
+		List<Temperature> temperatures = Arrays.asList(temp, temp2);
 		location.setCity("Santiago");
 		location.setLat("2.01");
 		location.setLon("2.03");
 		location.setState("Capital");	
 		weatherData.setLocation(location);
+		weatherData.setTemperature(temperatures);
 		service.save(weatherData);
 		
 		WeatherData weatherData2 = new WeatherData();

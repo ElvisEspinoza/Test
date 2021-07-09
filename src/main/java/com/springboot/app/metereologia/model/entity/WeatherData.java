@@ -2,10 +2,12 @@ package com.springboot.app.metereologia.model.entity;
 
 import java.io.Serializable;
 import java.util.List;
+import java.util.Set;
 
 import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
@@ -15,11 +17,12 @@ import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
 @Entity
-@Table(name = "weather_data")
+@Table(name = "weatherData")
 public class WeatherData implements Serializable{
 	
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
+	@Column(name="id")
 	private Long id;
 	
 	@Column(name = "create_at")
@@ -27,7 +30,7 @@ public class WeatherData implements Serializable{
 	
 	private Location location;
 	
-	@OneToMany(mappedBy="temperature", cascade = CascadeType.ALL)
+	@OneToMany(mappedBy="weatherData", cascade = CascadeType.ALL, fetch=FetchType.EAGER)
 	private List<Temperature> temperature;	
 
 	public Long getId() {
@@ -48,13 +51,13 @@ public class WeatherData implements Serializable{
 	}
 	public void setLocation(Location location) {
 		this.location = location;
-	}/*
+	}
 	public List<Temperature> getTemperature() {
 		return temperature;
 	}
 	public void setTemperature(List<Temperature> temperature) {
 		this.temperature = temperature;
-	}*/
+	}
 
 
 	private static final long serialVersionUID = 1285454306356845809L;
