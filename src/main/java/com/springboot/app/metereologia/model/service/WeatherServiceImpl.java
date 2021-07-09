@@ -1,5 +1,6 @@
 package com.springboot.app.metereologia.model.service;
 
+import java.util.Comparator;
 import java.util.List;
 import java.util.stream.Collectors;
 
@@ -20,7 +21,7 @@ public class WeatherServiceImpl implements IWeatherDataService{
 	@Override
 	@Transactional(readOnly = true)
 	public List<WeatherData> findAll() {
-		return (List<WeatherData>) weatherDao.findAll();
+		return weatherDao.findAll().stream().sorted(Comparator.comparing(WeatherData::getId)).collect(Collectors.toList());
 	}
 
 	@Override

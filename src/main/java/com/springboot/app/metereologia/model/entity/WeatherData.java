@@ -48,8 +48,16 @@ public class WeatherData implements Serializable{
 	}
 	public void setLocation(Location location) {
 		this.location = location;
+	}/*
+	public List<Temperature> getTemperature() {
+		return temperature;
 	}
+	public void setTemperature(List<Temperature> temperature) {
+		this.temperature = temperature;
+	}*/
+
 
 	private static final long serialVersionUID = 1285454306356845809L;
+
 
 }

@@ -1,6 +1,7 @@
 package com.springboot.app.metereologia.model.entity;
 
 
+import java.io.Serializable;
 import java.util.List;
 
 import javax.persistence.Column;
@@ -15,14 +16,43 @@ import javax.persistence.Table;
 
 @Entity
 @Table(name = "temperature")
-public class Temperature {
+public class Temperature implements Serializable{
 
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 4256338575296124554L;
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Long id;	
-	Double temperature;
+	Double temperature;		
 	
+	public Temperature(Double temperature) {
+		this.temperature = temperature;
+	}
+
 	@ManyToOne
 	@JoinColumn(name = "id", insertable = false, updatable = false)
 	private WeatherData weatherData;
+/*
+	public Long getId() {
+		return id;
+	}
+
+	public void setId(Long id) {
+		this.id = id;
+	}
+
+	public Double getTemperature() {
+		return temperature;
+	}
+
+	public void setTemperature(Double temperature) {
+		this.temperature = temperature;
+	}*/
+	
+	
+	
+	
+	
 }
