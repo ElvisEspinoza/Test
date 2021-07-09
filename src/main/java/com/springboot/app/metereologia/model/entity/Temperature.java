@@ -27,6 +27,9 @@ public class Temperature implements Serializable{
 	private Long id;	
 	Double temperature;		
 	
+	public Temperature() {
+	}
+	
 	public Temperature(Double temperature) {
 		this.temperature = temperature;
 	}
