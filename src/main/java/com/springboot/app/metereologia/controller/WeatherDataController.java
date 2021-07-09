@@ -32,7 +32,7 @@ public class WeatherDataController {
 	}
 	
 	@GetMapping
-	public List<WeatherData> findByDate(@RequestParam Date date) {
+	public List<WeatherData> findByDate(@RequestParam String date) {
 		return service.findByDate(date);
 	}
 

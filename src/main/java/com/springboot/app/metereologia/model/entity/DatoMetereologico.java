@@ -21,8 +21,7 @@ public class DatoMetereologico implements Serializable {
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Long id;
 		
-	@Temporal(TemporalType.DATE)
-	private Date date;
+	private String date;
 	
 	//private Map<String, Double> temperature;
 
@@ -34,11 +33,11 @@ public class DatoMetereologico implements Serializable {
 		this.id = id;
 	}
 
-	public Date getDate() {
+	public String getDate() {
 		return date;
 	}
 
-	public void setDate(Date date) {
+	public void setDate(String date) {
 		this.date = date;
 	}
 	

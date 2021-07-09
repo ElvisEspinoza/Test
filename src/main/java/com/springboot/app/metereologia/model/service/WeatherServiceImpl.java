@@ -1,6 +1,5 @@
 package com.springboot.app.metereologia.model.service;
 
-import java.util.Date;
 import java.util.List;
 import java.util.stream.Collectors;
 
@@ -26,7 +25,7 @@ public class WeatherServiceImpl implements IWeatherDataService{
 
 	@Override
 	@Transactional(readOnly = true)
-	public List<WeatherData> findByDate(Date date) {
+	public List<WeatherData> findByDate(String date) {
 		return weatherDao.findAll().stream()
 				.filter(data -> data.getCreateAt().equals(date))
 				.collect(Collectors.toList());
