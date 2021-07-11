@@ -76,7 +76,12 @@ public class WeatherData implements Serializable{
 	public void setTemperature(List<Temperature> temperature) {
 		this.temperature = temperature;
 	}
-
+	
+	@Override
+	public String toString() {
+		return "WeatherData [id=" + id + ", createAt=" + createAt + ", location=" + location + ", temperature="
+				+ temperature + "]";
+	}
 
 	private static final long serialVersionUID = 1285454306356845809L;
 
