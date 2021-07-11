@@ -21,7 +21,6 @@ public class WeatherServiceImpl implements IWeatherDataService{
 	@Override
 	@Transactional(readOnly = true)
 	public List<WeatherData> findAll() {
-		weatherDao.findAll().stream().map(data -> data.getTemperature().size()).forEach(tam -> System.out.println("tamaño: " + tam));		
 		return weatherDao.findAll().stream().sorted(Comparator.comparing(WeatherData::getId)).collect(Collectors.toList());
 	}
 

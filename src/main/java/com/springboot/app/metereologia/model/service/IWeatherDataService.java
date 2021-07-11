@@ -1,6 +1,5 @@
 package com.springboot.app.metereologia.model.service;
 
-import java.util.Date;
 import java.util.List;
 
 import com.springboot.app.metereologia.model.entity.WeatherData;

@@ -2,22 +2,19 @@ package com.springboot.app.metereologia.model.entity;
 
 import java.io.Serializable;
 import java.util.List;
-import java.util.Set;
 
 import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
-import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
-import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
 @Entity
-@Table(name = "weatherData")
+@Table(name = "weather_data")
 public class WeatherData implements Serializable{
 	
 	@Id
@@ -30,9 +27,30 @@ public class WeatherData implements Serializable{
 	
 	private Location location;
 	
-	@OneToMany(mappedBy="weatherData", cascade = CascadeType.ALL, fetch=FetchType.EAGER)
-	private List<Temperature> temperature;	
+	//@OneToMany(mappedBy="weatherData", cascade = CascadeType.ALL, fetch=FetchType.EAGER)
+	//@OneToMany(fetch = FetchType.LAZY, cascade = CascadeType.ALL, orphanRemoval = true)
+	//@JoinColumn(name ="cp_fk")
+    @OneToMany(targetEntity = Temperature.class,cascade = CascadeType.ALL)
+    @JoinColumn(name ="weather_data_fk")//weather_data_fk queda asociado a un campo llamado weather_data_fk en la tabla de la clase Temperature
+	private List<Temperature> temperature;
+	
+	
+	public WeatherData() {
+	}
 
+	public WeatherData(Long id, String createAt, Location location, List<Temperature> temperature) {
+		this.id = id;
+		this.createAt = createAt;
+		this.location = location;
+		this.temperature = temperature;
+	}
+	
+	public WeatherData(String createAt, Location location, List<Temperature> temperature) {
+		this.createAt = createAt;
+		this.location = location;
+		this.temperature = temperature;
+	}
+	
 	public Long getId() {
 		return id;
 	}
